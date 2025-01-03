@@ -1,0 +1,364 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>符号执行与angr | Pluto's blog</title><meta name="author" content="Pluto"><meta name="copyright" content="Pluto"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="好久之前写的了，传上来当备个份">
+<meta property="og:type" content="article">
+<meta property="og:title" content="符号执行与angr">
+<meta property="og:url" content="http://pluto7777.com/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/index.html">
+<meta property="og:site_name" content="Pluto&#39;s blog">
+<meta property="og:description" content="好久之前写的了，传上来当备个份">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://pluto7777.com/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/cover.jpg">
+<meta property="article:published_time" content="2025-01-03T14:11:45.000Z">
+<meta property="article:modified_time" content="2025-01-03T14:19:55.133Z">
+<meta property="article:author" content="Pluto">
+<meta property="article:tag" content="angr, 符号执行, reverse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pluto7777.com/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/cover.jpg"><link rel="shortcut icon" href="/images/favicon.jpg"><link rel="canonical" href="http://pluto7777.com/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Pluto","link":"链接: ","source":"来源: Pluto's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '符号执行与angr',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-01-03 22:19:55'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/pluto.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/cover.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pluto's blog"><img class="site-icon" src="/images/pluto.jpg"/><span class="site-name">Pluto's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">符号执行与angr</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-03T14:11:45.000Z" title="发表于 2025-01-03 22:11:45">2025-01-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-03T14:19:55.133Z" title="更新于 2025-01-03 22:19:55">2025-01-03</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/reverse%E7%AC%94%E8%AE%B0/">reverse笔记</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="符号执行与angr"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="符号执行与angr">符号执行与<code>angr</code></h1>
+<h2 id="符号执行">符号执行</h2>
+<p>符号执行（Symbolic
+Execution）是一种程序分析技术，可以通过静态分析程序来得到让特定代码区域执行的输入。同时，它是一种白盒的静态分析技术，即分析程序可能的输入需要能够获取到目标源代码的支持。</p>
+<p>使用符号执行分析一个程序时，会使用符号值作为输入，而非一般执行程序时使用的具体值。笔者在学习的时候，感觉可以类比成概率论中的离散随机变量或者离散数学中的事件。在达到目标代码时，分析器可以得到相应的路径约束，然后通过约束求解器来得到可以触发目标代码的具体值。</p>
+<h2 id="angr"><code>angr</code></h2>
+<h3 id="简介">简介</h3>
+<p><code>angr</code>是一个多架构二进制分析工具包，具有执行动态符号执行（如
+Mayhem、KLEE
+等）和对二进制文件进行各种静态分析的能力，是目前最好用的符号执行引擎之一，是逆向辅助分析的神器。</p>
+<p>符号执行有两个基础：执行路径和符号，以下通过这两方面来学习。</p>
+<p>执行路径：当程序读取文件的时候，我们需要将文件进行符号向量化当作我们的输入。我们需要创建一个<code>SimFile</code>对象，该对象是个模拟文件，然后将符号变量存放在模拟文件中并将模拟文件插入到<code>state</code>中，这样在模拟运行时，程序就会从我们模拟的文件中读取符号变量作为输入的参数进行后续的运行。</p>
+<p>符号：当用户输入是从标准输入（<code>stdin</code>）中获得，比如简单调用<code>scanf</code>函数的时候，<code>angr</code>会自动注入符号进行符号化；然而，当用户输入更复杂，比如<code>scanf</code>函数的格式化字符串很复杂，或者从文件、网络或者UI中获取输入的时候，<code>angr</code>则不会自动注入符号，这时我们需要手动在需要的地方进行注入符号。<code>angr</code>中的符号是由<code>bitvector</code>（位向量）表示的，这一点与<code>z3</code>约束求解器类似，其实<code>angr</code>与<code>z3</code>在笔者看来有很多类似之处，都可以进行约束条件下的问题求解。</p>
+<p>Angr
+其实并不是真正被运行起来的，它就向一个虚拟机，会读取每一条命令并在虚拟机中模拟该命令的行为。我们类比到更加常用的
+z3 库中，每个寄存器都可以相当与 z3
+中的一个变量，在模拟执行的过程中，这个变量会被延伸为一个表达式，而当我们成功找到了目标地址之后，通过表达式就可以求解对应的初值应该是什么了。</p>
+<h3 id="安装">安装</h3>
+<p>这里提供的是<code>docoker</code>安装方式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#拉取docker镜像（注意名字是angr/angr）</span></span><br><span class="line">docker pull angr/angr</span><br><span class="line"><span class="comment">#两种方式与本地进行交互，一种是把本地的一个文件夹映射到容器的/angr，如下</span></span><br><span class="line">docker run -it -v 本地文件夹路径:/angr angr/angr</span><br><span class="line"><span class="comment">#另一种是把本地文件cp到容器中的/angr，如下</span></span><br><span class="line">docker <span class="built_in">cp</span> 本地文件路径 容器<span class="built_in">id</span>或名字:/angr</span><br><span class="line"><span class="comment">#同理，也可以把容器/angr下的文件cp到本地</span></span><br><span class="line">docker <span class="built_in">cp</span> 容器<span class="built_in">id</span>或名字:/angr 本地文件路径</span><br><span class="line"><span class="comment">#进入容器环境</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器<span class="built_in">id</span> bash</span><br></pre></td></tr></table></figure>
+<h3 id="在ctf中的应用">在ctf中的应用</h3>
+<h4 id="简单re题">简单re题</h4>
+<p>笔者学习<code>angr</code>主要是在ctf逆向题中应用，所以也没有深学，简单学习了一下流程，看了几位大佬的博客，主要掌握流程脚本</p>
+<p><code>angr</code>的一般流程，一把梭</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> angr</span><br><span class="line">project = angr.Project(path_to_binary, auto_load_libs=<span class="literal">False</span>)    <span class="comment"># 加载程序，注意第一个参数是文件路径，不是文件名</span></span><br><span class="line">state = project.factory.entry_state()       <span class="comment"># 创建一个状态,默认为程序的入口地址</span></span><br><span class="line">simgr = project.factory.simgr(state)      <span class="comment"># 创建一个模拟器用来模拟程序执行,遍历所有路径</span></span><br><span class="line">simgr.explore(find=addr_1,avoid=addr_2)   <span class="comment"># 约束执行的流程，addr1为预期执行地址，addr2为避免地址（avoid不一定有）</span></span><br><span class="line"><span class="built_in">print</span>(simgr.found[<span class="number">0</span>].posix.dumps(<span class="number">0</span>))      <span class="comment">#打印结果</span></span><br></pre></td></tr></table></figure>
+<h4 id="反ollvm">反<code>OLLVM</code></h4>
+<p>笔者也是学到一半才想到，之前在学习<code>OLLVM</code>的时候用的反混淆工具<code>deflat</code>就是基于<code>angr</code>框架的，拍脑袋一想，还真是~</p>
+<p>符号执行不是就是去除控制流平坦化的绝佳办法之一吗！</p>
+<p>利用<code>angr</code>符号执行去除控制流平坦化的步骤可以归结为三个步骤：</p>
+<ol type="1">
+<li>静态分析CFG得到序言/入口块（Prologue）、主分发器（Main
+dispatcher）、子分发器/无用块（Sub dispatchers）、真实块（Relevant
+blocks）、预分发器（Predispatcher）和返回块（Return）</li>
+<li>利用符号执行恢复真实块的前后关系，重建控制流</li>
+<li>根据第二步重建的控制流Patch程序，输出恢复后的可执行文件</li>
+</ol>
+<h4 id="vm"><code>VM</code></h4>
+<p>如果<code>VM</code>题目的算法逻辑比较简单，可以考虑直接用<code>angr</code>一把梭，但也不是全能的，如果出题人有意设置陷阱例如构造陷阱循环递归、有意复杂化控制流可能导致路径爆炸等问题，超出了符号执行可以解决的能力范围，这个时候还是老老实实手搓吧~</p>
+<h3 id="流程原理介绍搬的佬-的博客原文">*流程原理介绍(搬的佬
+的博客原文)</h3>
+<h4 id="创建project">创建Project</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">path_to_binary = <span class="string">&quot;./00_angr_find&quot;</span> </span><br><span class="line">project = angr.Project(path_to_binary, auto_load_libs=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+<p>使用
+angr的首要步骤就是创建Project加载二进制文件。angr的二进制装载组件是CLE，它负责装载二进制对象（以及它依赖的任何库）和把这个对象以易于操作的方式交给angr的其他组件。angr将这些包含在Project类中。一个Project类是代表了你的二进制文件的实体。你与angr的大部分操作都会经过它</p>
+<p>auto_load_libs
+设置是否自动载入依赖的库，在基础题目中我们一般不需要分析引入的库文件，这里设置为否</p>
+<blockquote>
+<ul>
+<li>如果<code>auto_load_libs</code>是<code>True</code>（默认值），真正的库函数会被执行。这可能正是也可能不是你想要的，取决于具体的函数。比如说一些libc的函数分析起来过于复杂并且很有可能引起path对其的尝试执行过程中的state数量的爆炸增长</li>
+<li>如果<code>auto_load_libs</code>是<code>False</code>，且外部函数是无法找到的，并且Project会将它们引用到一个通用的叫做<code>ReturnUnconstrained</code>的<code>SimProcedure</code>上去，它就像它的名字所说的那样：它返回一个不受约束的值</li>
+</ul>
+</blockquote>
+<h4 id="设置-state">设置 state</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">initial_state = project.factory.entry_state()</span><br></pre></td></tr></table></figure>
+<p>state代表程序的一个实例镜像，模拟执行某个时刻的状态，就类似于<strong>快照</strong>。保存运行状态的上下文信息，如内存/寄存器等,我们这里使用<code>project.factory.entry_state()</code>告诉符号执行引擎从程序的入口点开始符号执行，除了使用<code>.entry_state()</code>
+创建 state 对象, 我们还可以根据需要使用其他构造函数创建 state</p>
+<h4 id="设置-simulation-managers">设置 Simulation Managers</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">simulation = project.factory.simgr(initial_state)</span><br></pre></td></tr></table></figure>
+<p>Project
+对象仅表示程序一开始的样子，而在执行时，我们实际上是对SimState对象进行操作，它代表程序的一个实例镜像，模拟执行某个时刻的状态</p>
+<p><code>SimState</code>
+对象包含程序运行时信息，如内存/寄存器/文件系统数据等。SM（Simulation
+Managers）是angr中最重要的控制接口，它使你能够同时控制一组状态(state)的符号执行，应用搜索策略来探索程序的状态空间。</p>
+<h4 id="运行探索满足路径需要的值">运行，探索满足路径需要的值</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">print_good_address = <span class="number">0x8048678</span>  </span><br><span class="line">simulation.explore(find=print_good_address)</span><br></pre></td></tr></table></figure>
+<p>符号执行最普遍的操作是找到能够到达某个地址的状态，同时丢弃其他不能到达这个地址的状态。SM为使用这种执行模式提供了<code>.explore()</code>方法</p>
+<p>当使用<code>find</code>参数启动<code>.explore()</code>方法时，程序将会一直执行，直到发现了一个和<code>find</code>参数指定的条件相匹配的状态。<code>find</code>参数的内容可以是想要执行到的某个地址、或者想要执行到的地址列表、或者一个获取state作为参数并判断这个state是否满足某些条件的函数。当<code>active</code>stash中的任意状态和<code>find</code>中的条件匹配的时候，它们就会被放到<code>found stash</code>中，执行随即停止。之后你可以探索找到的状态，或者决定丢弃它，转而探索其它状态。</p>
+<h4 id="获取执行结果">获取执行结果</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> simulation.found:</span><br><span class="line">        solution_state = simulation.found[<span class="number">0</span>]  <span class="comment"># 获取通过 explore 找到符合条件的状态</span></span><br><span class="line">        solution = solution_state.posix.dumps(sys.stdin.fileno())</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;[+] Success! Solution is: &#123;&#125;&quot;</span>.<span class="built_in">format</span>(solution.decode(<span class="string">&quot;utf-8&quot;</span>)))</span><br></pre></td></tr></table></figure>
+<p>此时相关的状态已经保存在了<code>simgr</code>当中，我们可以通过<code>simgr.found</code>来访问所有符合条件的分支，这里我们为了解题，就选择第一个符合条件的分支即可</p>
+<p>这里解释一下<code>sys.stdin.fileno()</code>,在UNIX中，按照惯例，三个文件描述符分别表示标准输入、标准输出和标准错误</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> sys</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.stdin.fileno()</span><br><span class="line"><span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.stdout.fileno()</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sys.stderr.fileno()</span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p>所以一般也可以写成：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">solution = solution_state.posix.dumps(<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="例题">例题</h4>
+<h5 id="网鼎杯-2020-青龙组singal">[网鼎杯 2020 青龙组]singal</h5>
+<figure>
+<img src="image-20240322224806843.png" alt="image-20240322224806843" />
+<figcaption aria-hidden="true">image-20240322224806843</figcaption>
+</figure>
+<p><code>main</code>函数逻辑简单，就是一个虚拟机逆向函数</p>
+<p>找一下<code>find</code>和<code>avoid</code></p>
+<figure>
+<img src="image-20240322225301783.png" alt="image-20240322225301783" />
+<figcaption aria-hidden="true">image-20240322225301783</figcaption>
+</figure>
+<p>整个<code>vm_operad</code>函数只有这一处<code>return</code>，猜测是正确输出</p>
+<figure>
+<img src="image-20240322225356421.png" alt="image-20240322225356421" />
+<figcaption aria-hidden="true">image-20240322225356421</figcaption>
+</figure>
+<p><code>find</code>的地址是<code>0x40175E</code>，或者选择<code>main</code>函数中<code>puts</code>的地址也可</p>
+<figure>
+<img src="image-20240322225711232.png" alt="image-20240322225711232" />
+<figcaption aria-hidden="true">image-20240322225711232</figcaption>
+</figure>
+<figure>
+<img src="image-20240322225759329.png" alt="image-20240322225759329" />
+<figcaption aria-hidden="true">image-20240322225759329</figcaption>
+</figure>
+<p><code>avoid</code>的地址是<code>0x4016E6</code></p>
+<p><code>angr</code>一把梭</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> angr</span><br><span class="line">project = angr.Project(<span class="string">&#x27;./signal.exe&#x27;</span>, auto_load_libs=<span class="literal">False</span>)</span><br><span class="line">state = project.factory.entry_state()</span><br><span class="line">simgr = project.factory.simgr(state)</span><br><span class="line">simgr.explore(find=<span class="number">0x40175E</span>,avoid=<span class="number">0x4016E6</span>)</span><br><span class="line"><span class="built_in">print</span>(simgr.found[<span class="number">0</span>].posix.dumps(<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="image-20240322225927809.png" alt="image-20240322225927809" />
+<figcaption aria-hidden="true">image-20240322225927809</figcaption>
+</figure>
+<h5 id="nkctf2024reez">[nkctf2024]REEZ</h5>
+<figure>
+<img src="image-20240328124939161.png" alt="image-20240328124939161" />
+<figcaption aria-hidden="true">image-20240328124939161</figcaption>
+</figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> angr</span><br><span class="line">project = angr.Project(<span class="string">&#x27;./outputfile&#x27;</span>, auto_load_libs=<span class="literal">False</span>)</span><br><span class="line">state = project.factory.entry_state()</span><br><span class="line">simgr = project.factory.simgr(state)</span><br><span class="line">simgr.explore(find=<span class="keyword">lambda</span> s: <span class="string">b&quot;What can I say? You are so great!&quot;</span> <span class="keyword">in</span> s.posix.dumps(<span class="number">1</span>))</span><br><span class="line"><span class="built_in">print</span>(simgr.found[<span class="number">0</span>].posix.dumps(<span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<p>注意<code>explore</code>的条件不是地址，这个题没法用地址</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">simgr.explore(find=<span class="keyword">lambda</span> s: <span class="string">b&quot;What can I say? You are so great!&quot;</span> <span class="keyword">in</span> s.posix.dumps(<span class="number">1</span>))</span><br></pre></td></tr></table></figure>
+<p>以下是chat给的各个参数的解释</p>
+<p>让我们逐个解释这段代码中的各个参数的含义：</p>
+<ol type="1">
+<li><code>simgr</code>: 这很可能是一个符号执行管理器（Symbolic Execution
+Manager）的实例，用于管理符号执行过程中的状态和路径。</li>
+<li><code>explore()</code>:
+这是符号执行管理器中的一个方法，用于探索程序的不同路径。</li>
+<li><code>find=lambda s: b"What can I say? You are so great!" in s.posix.dumps(1)</code>:
+这是 <code>explore()</code>
+方法的参数，是一个函数，用于指定符号执行时的条件。在这里，<code>lambda s: ...</code>
+是一个匿名函数，<code>s</code> 是符号执行状态的一个变量。条件
+<code>b"What can I say? You are so great!" in s.posix.dumps(1)</code>
+指定了当符号执行状态 <code>s</code>
+的标准输出中包含特定字符串时停止探索。
+<ul>
+<li><code>s</code>: 符号执行状态，代表程序执行过程中的一个状态。</li>
+<li><code>s.posix.dumps(1)</code>: 这部分是获取符号执行状态
+<code>s</code> 的标准输出的内容。在这里，<code>1</code>
+表示标准输出文件描述符（stdout），<code>s.posix.dumps(1)</code>
+返回标准输出的内容作为一个字节串。</li>
+<li><code>b"What can I say? You are so great!" in s.posix.dumps(1)</code>:
+这部分是条件，表示当特定字符串存在于标准输出中时，停止探索。</li>
+</ul></li>
+</ol>
+<h5 id="有参数脚本">有参数脚本</h5>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> angr</span><br><span class="line"><span class="keyword">import</span> claripy</span><br><span class="line">proj = angr.Project(<span class="string">&#x27;./angr2&#x27;</span>, auto_load_libs=<span class="literal">False</span>)</span><br><span class="line">argv1 = claripy.BVS(<span class="string">&quot;argv1&quot;</span>, <span class="number">9</span> * <span class="number">8</span>) // 这里用的单位是bit, 因此需要乘以<span class="number">8</span></span><br><span class="line">state = proj.factory.entry_state(args=[<span class="string">&#x27;./angr2&#x27;</span>, argv1]) // 导入参数</span><br><span class="line">simgr = proj.factory.simgr(state)</span><br><span class="line"><span class="built_in">print</span>(simgr.explore(find=<span class="number">0x4007DC</span>, avoid=<span class="number">0x4007EA</span>))</span><br><span class="line"><span class="built_in">print</span>(simgr.found[<span class="number">0</span>].solver.<span class="built_in">eval</span>(argv1, cast_to=<span class="built_in">bytes</span>)) // 直接输出是<span class="built_in">ascii</span>码, 用cast_to=<span class="built_in">bytes</span>转为<span class="built_in">bytes</span>类型</span><br></pre></td></tr></table></figure>
+<h2 id="约束求解">约束求解</h2>
+<h3 id="smt"><code>SMT</code></h3>
+<p>前面说了这么多，其实没有提到，如何求解约束条件下的问题呢？<code>SMT</code>就是重要的原理方法之一，<code>z3</code>、<code>ida</code>的<code>Ponce</code>插件就是用的<code>SMT</code>。</p>
+<p><code>SAT</code>（satisfiability）问题指的是命题逻辑公式的可满足性问题。但是
+<code>SAT</code> 在表达能力上有很大的局限性，需要比
+<code>SAT</code>更强的表达方式。在这种形势下，将<code>SAT</code>问题扩展为<code>SMT</code>，经过扩展，<code>SMT</code>
+能比<code>SAT</code>
+更好地表达一些人工智能和形式化方法领域内的问题，比如在资源规划、时序推理、编译器优化等很多方面用到了<code>SMT</code>。</p>
+<p><code>SMT</code> 的全称是 Satisfiability Modulo
+Theories，可被翻译为“可满足性模理论”、“多理论下的可满足性问题”或者“特定（背景）理论下的可满足性问题”，其判定算法被称为
+<code>SMT</code> 求解器。简单地说，一个
+<code>SMT</code>公式是结合了理论背景的逻辑公式，其中的命题变量可以代表理论公式。</p>
+<h2 id="结语">结语</h2>
+<p>本文非原创，前面也提到，笔者是学习re的过程中来了解一下的，主要是摘录了几位大佬的博客，详细内容没有学习完全，在这里附上链接:</p>
+<p><a
+target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-264878.htm">[原创]angr学习（二）-
+符号执行与angr_ctf_00/01/02</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.wangan.com/p/11v74d3c17b0eae9">Angr
+使用技巧速通笔记</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://ylcao.top/2022/05/10/%E5%85%A5%E9%97%A8angr%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E6%A1%86%E6%9E%B6/">入门angr符号执行框架</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/623524832">Angr
+使用技巧速通笔记</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://bluesadi.me/0x401RevTrain-Tools/angr/10_%E5%88%A9%E7%94%A8angr%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E5%8E%BB%E9%99%A4%E6%8E%A7%E5%88%B6%E6%B5%81%E5%B9%B3%E5%9D%A6%E5%8C%96/">利用angr符号执行去除控制流平坦化</a></p>
+<p><a
+target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/212816">Angr_CTF从入门到精通</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://pluto7777.com">Pluto</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://pluto7777.com/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/">http://pluto7777.com/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://pluto7777.com" target="_blank">Pluto's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/angr-%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C-reverse/">angr, 符号执行, reverse</a></div><div class="post_share"><div class="social-share" data-image="/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2024/01/23/buuctf-2019%E7%BA%A2%E5%B8%BD%E6%9D%AF-easyRE/" title="buuctf [2019红帽杯]easyRE"><img class="cover" src="/2024/01/23/buuctf-2019%E7%BA%A2%E5%B8%BD%E6%9D%AF-easyRE/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">buuctf [2019红帽杯]easyRE</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/pluto.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Pluto</div><div class="author-info__description">Sometimes things don't work out the way you thought they would.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">12</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Pluuuuto"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Pluuuuto" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr"><span class="toc-number">1.</span> <span class="toc-text">符号执行与angr</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C"><span class="toc-number">1.1.</span> <span class="toc-text">符号执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#angr"><span class="toc-number">1.2.</span> <span class="toc-text">angr</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8ctf%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">在ctf中的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%80%E5%8D%95re%E9%A2%98"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">简单re题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8Dollvm"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">反OLLVM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#vm"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">VM</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D%E6%90%AC%E7%9A%84%E4%BD%AC-%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%8E%9F%E6%96%87"><span class="toc-number">1.2.4.</span> <span class="toc-text">*流程原理介绍(搬的佬
+的博客原文)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAproject"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">创建Project</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-state"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">设置 state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-simulation-managers"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">设置 Simulation Managers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%8E%A2%E7%B4%A2%E6%BB%A1%E8%B6%B3%E8%B7%AF%E5%BE%84%E9%9C%80%E8%A6%81%E7%9A%84%E5%80%BC"><span class="toc-number">1.2.4.4.</span> <span class="toc-text">运行，探索满足路径需要的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%89%A7%E8%A1%8C%E7%BB%93%E6%9E%9C"><span class="toc-number">1.2.4.5.</span> <span class="toc-text">获取执行结果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">1.2.4.6.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BD%91%E9%BC%8E%E6%9D%AF-2020-%E9%9D%92%E9%BE%99%E7%BB%84singal"><span class="toc-number">1.2.4.6.1.</span> <span class="toc-text">[网鼎杯 2020 青龙组]singal</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#nkctf2024reez"><span class="toc-number">1.2.4.6.2.</span> <span class="toc-text">[nkctf2024]REEZ</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%9C%89%E5%8F%82%E6%95%B0%E8%84%9A%E6%9C%AC"><span class="toc-number">1.2.4.6.3.</span> <span class="toc-text">有参数脚本</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BA%A6%E6%9D%9F%E6%B1%82%E8%A7%A3"><span class="toc-number">1.3.</span> <span class="toc-text">约束求解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#smt"><span class="toc-number">1.3.1.</span> <span class="toc-text">SMT</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">1.4.</span> <span class="toc-text">结语</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/" title="符号执行与angr"><img src="/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="符号执行与angr"/></a><div class="content"><a class="title" href="/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/" title="符号执行与angr">符号执行与angr</a><time datetime="2025-01-03T14:11:45.000Z" title="发表于 2025-01-03 22:11:45">2025-01-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/23/buuctf-2019%E7%BA%A2%E5%B8%BD%E6%9D%AF-easyRE/" title="buuctf [2019红帽杯]easyRE"><img src="/2024/01/23/buuctf-2019%E7%BA%A2%E5%B8%BD%E6%9D%AF-easyRE/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="buuctf [2019红帽杯]easyRE"/></a><div class="content"><a class="title" href="/2024/01/23/buuctf-2019%E7%BA%A2%E5%B8%BD%E6%9D%AF-easyRE/" title="buuctf [2019红帽杯]easyRE">buuctf [2019红帽杯]easyRE</a><time datetime="2024-01-23T04:31:02.000Z" title="发表于 2024-01-23 12:31:02">2024-01-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/21/Z3-Solver%E5%AD%A6%E4%B9%A0/" title="Z3-Solver学习"><img src="/2024/01/21/Z3-Solver%E5%AD%A6%E4%B9%A0/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Z3-Solver学习"/></a><div class="content"><a class="title" href="/2024/01/21/Z3-Solver%E5%AD%A6%E4%B9%A0/" title="Z3-Solver学习">Z3-Solver学习</a><time datetime="2024-01-21T13:51:24.000Z" title="发表于 2024-01-21 21:51:24">2024-01-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/07/Shell%E5%AD%A6%E4%B9%A0/" title="Shell学习"><img src="/2024/01/07/Shell%E5%AD%A6%E4%B9%A0/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shell学习"/></a><div class="content"><a class="title" href="/2024/01/07/Shell%E5%AD%A6%E4%B9%A0/" title="Shell学习">Shell学习</a><time datetime="2024-01-07T03:03:02.000Z" title="发表于 2024-01-07 11:03:02">2024-01-07</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/" title="计算机网络笔记（六）"><img src="/2023/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络笔记（六）"/></a><div class="content"><a class="title" href="/2023/12/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%94%E8%AE%B0%EF%BC%88%E5%85%AD%EF%BC%89/" title="计算机网络笔记（六）">计算机网络笔记（六）</a><time datetime="2023-12-21T15:54:54.000Z" title="发表于 2023-12-21 23:54:54">2023-12-21</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/2025/01/03/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/cover.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By Pluto</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script id="canvas_nest" defer="defer" color="0,0,255" opacity="0.7" zIndex="-1" count="99" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="(づ′▽`)づ,Σ(ʘωʘﾉ)ﾉ,(●• ̀ω•́ )✧,(•̀⌓• )シ" data-fontsize="20px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
