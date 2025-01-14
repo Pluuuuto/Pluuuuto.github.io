@@ -1,0 +1,377 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>WP-[2025软件系统安全赛]happylock | Pluto's blog</title><meta name="author" content="Pluto"><meta name="copyright" content="Pluto"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="用hook打败hook~">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WP-[2025软件系统安全赛]happylock">
+<meta property="og:url" content="http://pluto7777.com/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/index.html">
+<meta property="og:site_name" content="Pluto&#39;s blog">
+<meta property="og:description" content="用hook打败hook~">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://pluto7777.com/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/cover.jpg">
+<meta property="article:published_time" content="2025-01-14T15:08:22.000Z">
+<meta property="article:modified_time" content="2025-01-14T15:10:51.616Z">
+<meta property="article:author" content="Pluto">
+<meta property="article:tag" content="reverse">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://pluto7777.com/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/cover.jpg"><link rel="shortcut icon" href="/images/favicon.jpg"><link rel="canonical" href="http://pluto7777.com/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Pluto","link":"链接: ","source":"来源: Pluto's blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WP-[2025软件系统安全赛]happylock',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-01-14 23:10:51'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/pluto.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/cover.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Pluto's blog"><img class="site-icon" src="/images/pluto.jpg"/><span class="site-name">Pluto's blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">WP-[2025软件系统安全赛]happylock</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-01-14T15:08:22.000Z" title="发表于 2025-01-14 23:08:22">2025-01-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-01-14T15:10:51.616Z" title="更新于 2025-01-14 23:10:51">2025-01-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/WP/">WP</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="WP-[2025软件系统安全赛]happylock"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="happylock">HappyLock</h1>
+<p>比赛的时候写了好久，可惜还是差一些，没有写出来...</p>
+<h2 id="赛中进度">赛中进度</h2>
+<p>模拟器里运行一下，这是一个手势密码验证程序，通过输入正确手势密码得到一个哈希值作为<code>flag</code></p>
+<h3 id="框架oncomplete方法">框架<code>oncomplete</code>方法</h3>
+<p>jadx
+反编译，核心在<code>com.crackme.happylock.MainActivity</code>类的<code>oncomplete</code>方法中，这个方法实现了将用户输入的手势密码进行编码加密处理以及与预设值进行对比</p>
+<p><img src="image-20250111111423716.png" /></p>
+<p>解析如下，其中<code>StringObf.decode</code>方法就是 base64 解码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span> <span class="comment">// com.andrognito.patternlockview.listener.PatternLockViewListener</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onComplete</span><span class="params">(List&lt;PatternLockView.Dot&gt; list)</span> &#123;</span><br><span class="line">    <span class="type">MainActivity</span> <span class="variable">$r2</span> <span class="operator">=</span> MainActivity.<span class="built_in">this</span>;</span><br><span class="line">    <span class="type">PatternLockView</span> <span class="variable">$r3</span> <span class="operator">=</span> $r2.mPatternLockView;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">$r4</span> <span class="operator">=</span> PatternLockUtils.enc($r3, list); <span class="comment">// 将用户绘制的图案进行加密</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">$z0</span> <span class="operator">=</span> Utils.cmp($r4); <span class="comment">// 比较加密后的图案和预设的图案</span></span><br><span class="line">        <span class="keyword">if</span> (!$z0) &#123;</span><br><span class="line">            <span class="comment">// 如果图案不匹配</span></span><br><span class="line">            <span class="type">MainActivity</span> <span class="variable">$r22</span> <span class="operator">=</span> MainActivity.<span class="built_in">this</span>;</span><br><span class="line">            <span class="type">PatternLockView</span> <span class="variable">$r32</span> <span class="operator">=</span> $r22.mPatternLockView;</span><br><span class="line">            $r32.setViewMode(<span class="number">2</span>); <span class="comment">// 设置图案锁为错误模式（显示错误提示）</span></span><br><span class="line">            <span class="type">MainActivity</span> <span class="variable">$r23</span> <span class="operator">=</span> MainActivity.<span class="built_in">this</span>;</span><br><span class="line">            <span class="type">Context</span> <span class="variable">$r5</span> <span class="operator">=</span> $r23.context;</span><br><span class="line">            <span class="type">Toast</span> <span class="variable">$r8</span> <span class="operator">=</span> Toast.makeText($r5, StringObf.decode(<span class="string">&quot;VHJ5IGFnYWlu&quot;</span>), <span class="number">0</span>); <span class="comment">// 解密提示信息，base64解码为&quot;Try again&quot;</span></span><br><span class="line">            $r8.show(); <span class="comment">// 显示提示信息</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 如果图案匹配</span></span><br><span class="line">        <span class="type">MainActivity</span> <span class="variable">$r24</span> <span class="operator">=</span> MainActivity.<span class="built_in">this</span>;</span><br><span class="line">        <span class="type">PatternLockView</span> <span class="variable">$r33</span> <span class="operator">=</span> $r24.mPatternLockView;</span><br><span class="line">        $r33.setViewMode(<span class="number">0</span>); <span class="comment">// 设置图案锁为正常模式（显示成功提示）</span></span><br><span class="line">        <span class="type">MainActivity</span> <span class="variable">$r25</span> <span class="operator">=</span> MainActivity.<span class="built_in">this</span>;</span><br><span class="line">        <span class="type">Context</span> <span class="variable">$r52</span> <span class="operator">=</span> $r25.context;</span><br><span class="line">        <span class="type">String</span> <span class="variable">$r7</span> <span class="operator">=</span> StringObf.decode(<span class="string">&quot;U3VibWl0IGRhcnR7&quot;</span>); <span class="comment">// 解密成功提示的字符串，base64解码为&quot;Submit dart&#123;&quot;</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">$r6</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>($r7);</span><br><span class="line">        <span class="type">Toast</span> <span class="variable">$r82</span> <span class="operator">=</span> Toast.makeText($r52, $r6.append($r4).append(StringObf.decode(<span class="string">&quot;fQ==&quot;</span>)).toString(), <span class="number">1</span>); <span class="comment">// 显示包含加密图案的提示信息，base64解码为&quot;&#125;&quot;</span></span><br><span class="line">        $r82.show(); <span class="comment">// 显示提示</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (UnsupportedEncodingException | NoSuchAlgorithmException $r9) &#123;</span><br><span class="line">        <span class="comment">// 异常处理</span></span><br><span class="line">        <span class="type">RuntimeException</span> <span class="variable">$r10</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>($r9);</span><br><span class="line">        <span class="keyword">throw</span> $r10; <span class="comment">// 抛出运行时异常</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到，调用<code>PatternLockUtils.enc</code>方法对用户输入进行加密处理，调用<code>Utils.cmp</code>方法比较加密后的图案和预设的图案，正确会将结果用<code>Submit dart&#123;&#125;</code>包裹起来显示，错误会显示<code>Try again</code></p>
+<h3 id="hookutils.cmp方法">Hook<code>Utils.cmp</code>方法</h3>
+<p>于是先尝试直接在<code>onComplete</code>里hook比较函数<code>Utils.cmp</code>，将返回值修改为正确，看一下加密结果的格式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hookUtilsCmp</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable constant_">C06201</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.crackme.happylock.MainActivity$1&quot;</span>);</span><br><span class="line">    <span class="variable constant_">C06201</span>[<span class="string">&quot;onComplete&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">list</span>) &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="title class_">Utils</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.crackme.happylock.Utils&quot;</span>);</span><br><span class="line">        <span class="title class_">Utils</span>.<span class="property">cmp</span>.<span class="property">implementation</span> = <span class="keyword">function</span>(<span class="params">str</span>) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Original input string: <span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="variable language_">this</span>[<span class="string">&quot;onComplete&quot;</span>](list);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">hookUtilsCmp</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(main);</span><br></pre></td></tr></table></figure>
+<p>不出所料，结果是一个40位十六进制的哈希值，可能是<code>SHA-1</code>做的哈希</p>
+<p><img src="image-20250111124414814.png" /></p>
+<p>同时，安卓端也显示了加密结果</p>
+<p><img src="image-20250111124802874.png" /></p>
+<p>但是上面的代码也可以看到，虽然绕过了<code>cmp</code>的检验，这里显示的哈希值还是我们随机输入的手势密码的结果，并不是目标密码的结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Toast</span> <span class="variable">$r82</span> <span class="operator">=</span> Toast.makeText($r52, $r6.append($r4).append(StringObf.decode(<span class="string">&quot;fQ==&quot;</span>)).toString(), <span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+<p>那么就要去看<code>Utils.cmp</code>方法的具体实现了</p>
+<p><img src="image-20250111132922994.png" /></p>
+<p>主要实现的是反射调用<code>clz.cmp</code>方法</p>
+<h3 id="反射调用clz.cmp方法">反射调用<code>clz.cmp</code>方法</h3>
+<p>于是hook查看一下反射调用的<code>clz</code>的具体信息</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hookUtilsCmp</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="title class_">Utils</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.crackme.happylock.Utils&quot;</span>);</span><br><span class="line">    <span class="title class_">Utils</span>[<span class="string">&quot;cmp&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Utils.cmp is called: str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">var</span> clz = <span class="variable language_">this</span>.<span class="property">clz</span>;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Reflection will invoke method in class: &quot;</span> + clz);</span><br><span class="line">        <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;cmp&quot;</span>](str);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Utils.cmp result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">hookUtilsCmp</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(main);</span><br></pre></td></tr></table></figure>
+<p>这个时候程序运行崩溃了，打印了<code>clz</code>的相关信息，可以看到
+<code>clz</code>实际上是一个<code>Java.Field</code>
+类型对象，它的<code>value</code>属性是一个名为<code>com.crackme.happylock.Check</code>的类，比较可疑</p>
+<p><img src="image-20250111140600164.png" /></p>
+<p>于是我们通过<code>clz.value</code>来访问</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hookUtilsCmp</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="title class_">Utils</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.crackme.happylock.Utils&quot;</span>);</span><br><span class="line">    <span class="title class_">Utils</span>[<span class="string">&quot;cmp&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Utils.cmp is called: str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">var</span> clz = <span class="variable language_">this</span>.<span class="property">clz</span>.<span class="property">value</span>;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Reflection will invoke method in class: &quot;</span> + clz);</span><br><span class="line">        <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;cmp&quot;</span>](str);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Utils.cmp result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">hookUtilsCmp</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(main);</span><br></pre></td></tr></table></figure>
+<p>遗憾的是虽然 <code>clz</code> 被成功获取为
+<code>class com.crackme.happylock.Check</code>，但是崩溃仍然发生，后续还换了各种方法，还是一直崩溃</p>
+<p><img src="image-20250111142509017.png" /></p>
+<p>同时注意到，其实 jadx
+中并没有<code>class com.crackme.happylock.Check</code>类，可能是动态加载的</p>
+<h3 id="动态加载check类">动态加载<code>Check</code>类</h3>
+<p>先尝试一下用<code>java.use()</code>强制加载</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hookUtilsCmp</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="title class_">Utils</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;com.crackme.happylock.Utils&quot;</span>);</span><br><span class="line">    <span class="title class_">Utils</span>[<span class="string">&quot;cmp&quot;</span>].<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">str</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Utils.cmp is called: str=<span class="subst">$&#123;str&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">var</span> clz = <span class="variable language_">this</span>.<span class="property">clz</span>.<span class="property">value</span>;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Reflection will invoke method in class: &quot;</span> + clz);</span><br><span class="line">        <span class="keyword">let</span> check = <span class="title class_">Java</span>.<span class="title function_">use</span>(clz.<span class="title function_">getName</span>());</span><br><span class="line">        <span class="keyword">let</span> result = <span class="variable language_">this</span>[<span class="string">&quot;cmp&quot;</span>](str);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`Utils.cmp result=<span class="subst">$&#123;result&#125;</span>`</span>);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">hookUtilsCmp</span>();</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(main);</span><br></pre></td></tr></table></figure>
+<p>果然不行，应该就是动态加载的</p>
+<p><img src="image-20250111162631704.png" /></p>
+<p>同时观察到<code>com.crackme.happylock.Utils</code>里有一个<code>loadclass</code>方法，猜测<code>Check</code>类是由它加载的，但是
+jadx 并没有把它反编译出来，没法看到它的具体实现</p>
+<p><img src="image-20250111173046052.png" /></p>
+<p>hook检查一下它是否调用了 <code>DexClassLoader</code>
+或其他类似的类加载器</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">hookDexClassLoader</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> <span class="title class_">DexClassLoader</span> = <span class="title class_">Java</span>.<span class="title function_">use</span>(<span class="string">&quot;dalvik.system.DexClassLoader&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Hook DexClassLoader 的构造函数</span></span><br><span class="line">    <span class="title class_">DexClassLoader</span>.<span class="property">$init</span>.<span class="title function_">overload</span>(</span><br><span class="line">        <span class="string">&quot;java.lang.String&quot;</span>,</span><br><span class="line">        <span class="string">&quot;java.lang.String&quot;</span>,</span><br><span class="line">        <span class="string">&quot;java.lang.String&quot;</span>,</span><br><span class="line">        <span class="string">&quot;java.lang.ClassLoader&quot;</span></span><br><span class="line">    ).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">dexPath, optimizedDirectory, librarySearchPath, parent</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;DexClassLoader initialized:&quot;</span>);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;  dexPath: &quot;</span> + dexPath);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;  optimizedDirectory: &quot;</span> + optimizedDirectory);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;  librarySearchPath: &quot;</span> + librarySearchPath);</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;  parent: &quot;</span> + parent);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.$init(dexPath, optimizedDirectory, librarySearchPath, parent);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Hook loadClass 方法</span></span><br><span class="line">    <span class="title class_">DexClassLoader</span>.<span class="property">loadClass</span>.<span class="title function_">overload</span>(<span class="string">&quot;java.lang.String&quot;</span>).<span class="property">implementation</span> = <span class="keyword">function</span> (<span class="params">className</span>) &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;DexClassLoader.loadClass called for class: &quot;</span> + className);</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="title function_">loadClass</span>(className);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">main</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="title class_">Java</span>.<span class="title function_">perform</span>(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">        <span class="title function_">hookDexClassLoader</span>(); <span class="comment">// Hook DexClassLoader</span></span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">setImmediate</span>(main);</span><br></pre></td></tr></table></figure>
+<p>可以看到，<code>Check</code>类的加载确实调用了<code>DexClassLoader.loadClass</code>方法，而且在下面还看到了<code>SHA-1</code>字样，验证了之前的猜测，手势密码加密编码之后是用<code>SHA-1</code>做哈希的</p>
+<p><img src="image-20250111181557996.png" /></p>
+<p>我赛中的进度就至此了，后面一直在捣鼓反射的事情，再到后面还尝试了全局扫描<code>SHA-1</code>哈希算法的调用情况，试图扫到目标手势密码编码后做哈希的过程，都失败了...</p>
+<p>而且，其实gpt当时给了我正确解法，但我一直忽略了，在纠结反射、自己的<code>loadclass</code>方法什么的...</p>
+<h2 id="赛后复现">赛后复现</h2>
+<h3 id="dumpclasses.dex">dump<code>classes.dex</code></h3>
+<p>正确解法就是去 dump
+运行时的<code>dex</code>文件<code>classes.dex</code>，这里用到了一个新工具<code>GDA</code>，具体的介绍见<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28354064">作者知乎</a></p>
+<blockquote>
+<p>需要注意的是先将<code>Gdump</code>push到安卓端，同时将<code>GDA</code>的<code>adb</code>环境变量放在模拟器<code>adb</code>环境变量之上</p>
+</blockquote>
+<p>打开 GDA，点击导航栏安卓图标的 dump
+功能打开<code>GDA Device Dumper</code>，在左侧选择<code>com.crackme.happylock</code>进程，右侧筛选<code>DEX</code>文件，可以看到<code>/data/data/com.crackme.happylock/files/classes.dex</code>，右键<code>Dump Module</code>即可</p>
+<blockquote>
+<p>一开始我也一直 dump
+不出来，只能说多试几次，重启一下之类的就可以了，或者就是 GDA 的
+Gdump、adb 没有配好，就是我上面说的</p>
+</blockquote>
+<p><img src="image-20250112115020163.png" /></p>
+<p>也可以全局查找，显示了 PID、地址范围等信息</p>
+<p><img src="image-20250112115336327.png" /></p>
+<p>也可以在下方输入要 dump 的文件的 PID、start_addr 和 size</p>
+<p><img src="image-20250112115435981.png" /></p>
+<p>dump 出来的文件在<code>GDA.exe</code>的同级目录下，拖到 jadx
+里分析，但是报错了</p>
+<p>日志显示错误为<code>Bad checksum</code>，看大佬的解释是 hook
+之后填充字节改变了<code>sum</code>值</p>
+<p><img src="image-20250112124255770.png" /></p>
+<p>修改 dump 出来的<code>classes.dex</code>的<code>sum</code>值即可</p>
+<p><img src="image-20250112125902731.png" /></p>
+<p>但是 jadx 还是反编译失败了</p>
+<p><img src="image-20250112144514538.png" /></p>
+<p>同样，也可以选择拖到 GDA 里面分析，但仍然反编译不出来什么东西</p>
+<p><img src="image-20250112145233210.png" /></p>
+<p>在学习大佬写的文章复现的时候，还看到了一个<code>frida-dump</code>的<a
+href="\https://github.com/lasting-yang/frida_dump">脚本库</a>，在这里跑出来的结果也是一样的</p>
+<p>根据参考的两篇文章，这里是字节码有问题，代码被抽取，这道题实际上就是用
+ShadowHook 实现类抽取</p>
+<h3 id="修复classes.dex">修复<code>classes.dex</code></h3>
+<p>Java 层卡住了，就要去 Native 层看一下了</p>
+<p><img src="image-20250112164750262.png" /></p>
+<p>ida 分析 libhappylock.so 文件（不得不说 ida9.0 确实好用，8.3 没有
+arm、mips 什么的反编译器，还得去用 7.7 反编译，现在 9.0
+都有了，定位到<code>JNI_OnLoad</code>函数</p>
+<p><img src="image-20250114110829013.png" /></p>
+<p>一般来说，<code>JNI_OnLoad</code>函数里会有本地方法注册<code>RegisterNatives</code>，但这里并没有，可能是自实现的<code>Register</code></p>
+<p>到这里，对于<code>JNI_OnLoad</code>函数的分析，我参考的两篇大佬的文章用了不一样的方法</p>
+<h4 id="使用bindiff恢复符号">使用<code>Bindiff</code>恢复符号</h4>
+<blockquote>
+<p>至于怎么看出来是 ShadowHook 的，我就不知道了...</p>
+</blockquote>
+<p>ShadowHook 是字节跳动的一个<a
+target="_blank" rel="noopener" href="https://github.com/bytedance/android-inline-hook">开源 inline hook
+框架</a></p>
+<p>于是下载抖音 apk，提取<code>libshadowhook.so</code>文件，用 ida
+打开，保存得到 i64 文件，ida
+打开<code>libhappylock.so</code>文件，ctrl+6
+调用<code>bindiff</code>，选择 Diff
+Database，选择<code>libshadowhook.so</code>的 i64 文件</p>
+<blockquote>
+<p>需要注意<code>Bindiff</code>不支持中文路径，所选择的 i64
+文件路径不要有中文，也不要有除下划线外的特殊符号</p>
+</blockquote>
+<p><img src="image-20250114154737249.png" /></p>
+<p>在 Matched Functions 窗口中选中所有匹配的函数符号</p>
+<p><img src="image-20250114154710365.png" /></p>
+<p>右键点击 Import symbols/comments 即可恢复匹配的符号</p>
+<p><img src="image-20250114155102195.png" /></p>
+<p>可以看到，确实有大量 ShadowHook
+相关函数，而且<code>JNI_OnLoad</code>函数中就有调用</p>
+<p><img src="image-20250114160155875.png" /></p>
+<h4 id="shadowhook-分析">ShadowHook 分析</h4>
+<p>其中，由于有符号信息，<code>shadowhook_hook_func_addr</code>函数就是调用<code>shadowhook_hook_sym_name</code>函数</p>
+<p><img src="image-20250114160541263.png" /></p>
+<p>参考<a
+target="_blank" rel="noopener" href="https://github.com/bytedance/android-inline-hook/blob/main/doc/manual.zh-CN.md">ShadowHook
+手册</a>，ShadowHook 支持通过“函数地址”或“库名 + 函数名”指定 hook
+位置</p>
+<p>参考手册，<code>shadowhook_hook_sym_name</code>函数声明如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;shadowhook.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> *<span class="title">shadowhook_hook_sym_name</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *lib_name, <span class="type">const</span> <span class="type">char</span> *sym_name, <span class="type">void</span> *new_addr, <span class="type">void</span> **orig_addr)</span></span>;s</span><br></pre></td></tr></table></figure>
+<p>参数</p>
+<ul>
+<li><code>lib_name</code>（必须指定）：需要被 hook 的函数所在的库名</li>
+<li><code>sym_addr</code>（必须指定）：需要被 hook 的函数的符号名</li>
+<li><code>new_addr</code>（必须指定）：新函数（proxy
+函数）的绝对地址</li>
+<li><code>orig_addr</code>（不需要的话可传
+<code>NULL</code>）：返回原函数地址</li>
+</ul>
+<p>这种方式可以 hook “当前已加载到进程中的动态库”，也可以 hook
+“还没有加载到进程中的动态库”，即如果 hook 时动态库还未加载，ShadowHook
+内部会记录当前的 hook
+“诉求”，后续一旦目标动态库被加载到内存中，将立刻执行 hook 操作</p>
+<p>参考以上，观察这里的<code>shadowhook_hook_sym_name</code>函数的参数，前两个参数如下，但是需要注意的是这里显示的数据不是正确的，交叉引用可以看到对这些值有动态修改</p>
+<p><img src="image-20250114192731996.png" /></p>
+<p><code>sub_12414</code>函数如下，可以看到其中对<code>0x430C0-0x430C6</code>有一个异或
+4
+的操作，对<code>0x430B8</code>有一个异或<code>0xE1E1E1E1E1E1E1E1</code>的操作，</p>
+<p><img src="image-20250114192827317.png" /></p>
+<p>而查看<code>sub_12414</code>的交叉引用就能发现它在<code>.init_array</code>段，也就意味着这些异或操作程序一运行就会进行</p>
+<p><img src="image-20250114194047000.png" /></p>
+<p>本来想动调的，但是有点问题，那就手动异或回去吧，可以看到<code>lib_name</code>是<code>libc.so</code>，<code>sym_name</code>是<code>execve</code></p>
+<p><img src="image-20250114201453009.png" /></p>
+<p><img src="image-20250114201555986.png" /></p>
+<p>看到不是目标函数我就没继续下去了，看大佬的文章，后面代理函数<code>sub_121E4</code>中判断系统调用是否为<code>dex2oat</code>，如果是则不执行,如果不是则执行</p>
+<p>下面<code>shadowhook_hook_sym_name_callback</code>里也调用了<code>shadowhook_hook_sym_name</code></p>
+<p><img src="image-20250114201827585.png" /></p>
+<p>同样地，之前的<code>sub_12414</code>函数中也看到了，对<code>0x430C8</code>有一个异或<code>0x7D7D7D7D7D7D7D7D</code>的操作，异或之后得到<code>lib_name</code>为<code>libart.so</code></p>
+<p><img src="image-20250114204451933.png" /></p>
+<p>我这里 ida
+识别的有点问题，需要手动把下面<code>0x430D0</code>的<code>0x12</code>带上</p>
+<p><img src="image-20250114204549459.png" /></p>
+<p>这里符号恢复得也有点问题，别人的恢复除了这里的<code>sym_name</code>，也就是<code>sub_1216C</code>，是<code>__android_log_print</code>函数，而代理函数正是我们苦苦寻求的目标函数</p>
+<p><img src="image-20250114205834218.png" /></p>
+<p>这个函数实现的功能是检测<code>dex</code>文件大小，如果匹配到目标<code>dex</code>则执行回填操作，从偏移为<code>0x178(376)</code>开始的<code>0x98</code>大小的字节，回填的内容就是<code>0x42D90</code>处内容</p>
+<p><img src="image-20250114210022136.png" /></p>
+<p>而检测<code>dex</code>文件大小为<code>0x3AC</code>,实际上就是之前
+dump 出来的<code>dex</code>文件的有效部分，后面都是0</p>
+<p><img src="image-20250114210259268.png" /></p>
+<p>同时，偏移为<code>0x217(535)</code>的地方也要赋值为<code>0x430A0</code>处的值，同样也要进行异或</p>
+<p><img src="image-20250114211420838.png" /></p>
+<p>把这些内容按照上面的说的偏移位置填入，即修复成功</p>
+<p><img src="image-20250113170400495.png" /></p>
+<p>终于反编译成功！！！</p>
+<p><img src="image-20250114211511417.png" /></p>
+<p>很简单的异或逻辑，<code>exp</code>如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">enc = [<span class="number">118</span>, <span class="number">17</span>, <span class="number">2</span>, <span class="number">80</span>, <span class="number">9</span>, <span class="number">125</span>, <span class="number">6</span>, <span class="number">22</span>, <span class="number">113</span>, <span class="number">66</span>, <span class="number">0</span>, <span class="number">81</span>, <span class="number">94</span>, <span class="number">41</span>, <span class="number">87</span>, <span class="number">20</span>, <span class="number">122</span>, <span class="number">65</span>, <span class="number">88</span>, <span class="number">5</span>, <span class="number">94</span>, <span class="number">41</span>, <span class="number">7</span>, <span class="number">19</span>, <span class="number">118</span>, <span class="number">22</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">90</span>, <span class="number">41</span>, <span class="number">87</span>, <span class="number">71</span>, <span class="number">117</span>, <span class="number">68</span>, <span class="number">4</span>, <span class="number">7</span>, <span class="number">95</span>, <span class="number">116</span>, <span class="number">4</span>, <span class="number">67</span>]</span><br><span class="line">key = <span class="string">b&#x27;CrackMe!CrackMe!&#x27;</span></span><br><span class="line">flag = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(enc)):</span><br><span class="line">    flag.append(enc[i]^key[i%<span class="built_in">len</span>(key)])</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">bytes</span>(flag).decode())</span><br></pre></td></tr></table></figure>
+<h2 id="参考">参考</h2>
+<p><a
+target="_blank" rel="noopener" href="https://bbs.kanxue.com/thread-285135.htm">[2025软件系统安全赛]HappyLock（对抗使用SHadowHook实现的类抽取）</a></p>
+<p><a
+target="_blank" rel="noopener" href="http://www.yxfzedu.com/article/12160">Android安全-全国高校大学生软件创新大赛-软件系统安全赛
+HappyLock复现</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://pluto7777.com">Pluto</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://pluto7777.com/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/">http://pluto7777.com/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://pluto7777.com" target="_blank">Pluto's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/reverse/">reverse</a></div><div class="post_share"><div class="social-share" data-image="/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/01/10/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-donntyousee/" title="WP-[2025软件系统安全赛]donntyousee"><img class="cover" src="/2025/01/10/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-donntyousee/cover.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">WP-[2025软件系统安全赛]donntyousee</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2024/01/21/Z3-Solver%E5%AD%A6%E4%B9%A0/" title="Z3-Solver"><img class="cover" src="/2024/01/21/Z3-Solver%E5%AD%A6%E4%B9%A0/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-21</div><div class="title">Z3-Solver</div></div></a></div><div><a href="/2024/01/23/buuctf-2019%E7%BA%A2%E5%B8%BD%E6%9D%AF-easyRE/" title="WP-[2019红帽杯]easyRE"><img class="cover" src="/2024/01/23/buuctf-2019%E7%BA%A2%E5%B8%BD%E6%9D%AF-easyRE/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-23</div><div class="title">WP-[2019红帽杯]easyRE</div></div></a></div><div><a href="/2024/03/28/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/" title="符号执行与angr"><img class="cover" src="/2024/03/28/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-03-28</div><div class="title">符号执行与angr</div></div></a></div><div><a href="/2024/01/27/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令"><img class="cover" src="/2024/01/27/%E8%8A%B1%E6%8C%87%E4%BB%A4/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2024-01-27</div><div class="title">花指令</div></div></a></div><div><a href="/2025/01/10/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-donntyousee/" title="WP-[2025软件系统安全赛]donntyousee"><img class="cover" src="/2025/01/10/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-donntyousee/cover.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-10</div><div class="title">WP-[2025软件系统安全赛]donntyousee</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/pluto.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Pluto</div><div class="author-info__description">Sometimes things don't work out the way you thought they would.</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Pluuuuto"><i class="fab fa-github"></i><span>My Github</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">发个公告敦促自己学习，坚持写笔记传博客！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#happylock"><span class="toc-number">1.</span> <span class="toc-text">HappyLock</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%9B%E4%B8%AD%E8%BF%9B%E5%BA%A6"><span class="toc-number">1.1.</span> <span class="toc-text">赛中进度</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A1%86%E6%9E%B6oncomplete%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.1.</span> <span class="toc-text">框架oncomplete方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hookutils.cmp%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">HookUtils.cmp方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E8%B0%83%E7%94%A8clz.cmp%E6%96%B9%E6%B3%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">反射调用clz.cmp方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BDcheck%E7%B1%BB"><span class="toc-number">1.1.4.</span> <span class="toc-text">动态加载Check类</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%9B%E5%90%8E%E5%A4%8D%E7%8E%B0"><span class="toc-number">1.2.</span> <span class="toc-text">赛后复现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dumpclasses.dex"><span class="toc-number">1.2.1.</span> <span class="toc-text">dumpclasses.dex</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E5%A4%8Dclasses.dex"><span class="toc-number">1.2.2.</span> <span class="toc-text">修复classes.dex</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8bindiff%E6%81%A2%E5%A4%8D%E7%AC%A6%E5%8F%B7"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">使用Bindiff恢复符号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shadowhook-%E5%88%86%E6%9E%90"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">ShadowHook 分析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.3.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/" title="WP-[2025软件系统安全赛]happylock"><img src="/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WP-[2025软件系统安全赛]happylock"/></a><div class="content"><a class="title" href="/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/" title="WP-[2025软件系统安全赛]happylock">WP-[2025软件系统安全赛]happylock</a><time datetime="2025-01-14T15:08:22.000Z" title="发表于 2025-01-14 23:08:22">2025-01-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/10/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-donntyousee/" title="WP-[2025软件系统安全赛]donntyousee"><img src="/2025/01/10/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-donntyousee/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WP-[2025软件系统安全赛]donntyousee"/></a><div class="content"><a class="title" href="/2025/01/10/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-donntyousee/" title="WP-[2025软件系统安全赛]donntyousee">WP-[2025软件系统安全赛]donntyousee</a><time datetime="2025-01-10T14:12:15.000Z" title="发表于 2025-01-10 22:12:15">2025-01-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/07/04/Frida-Hook/" title="Frida-Hook"><img src="/2024/07/04/Frida-Hook/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Frida-Hook"/></a><div class="content"><a class="title" href="/2024/07/04/Frida-Hook/" title="Frida-Hook">Frida-Hook</a><time datetime="2024-07-04T10:50:24.000Z" title="发表于 2024-07-04 18:50:24">2024-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/03/28/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/" title="符号执行与angr"><img src="/2024/03/28/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="符号执行与angr"/></a><div class="content"><a class="title" href="/2024/03/28/%E7%AC%A6%E5%8F%B7%E6%89%A7%E8%A1%8C%E4%B8%8Eangr/" title="符号执行与angr">符号执行与angr</a><time datetime="2024-03-28T09:31:50.000Z" title="发表于 2024-03-28 17:31:50">2024-03-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/01/27/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令"><img src="/2024/01/27/%E8%8A%B1%E6%8C%87%E4%BB%A4/cover.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="花指令"/></a><div class="content"><a class="title" href="/2024/01/27/%E8%8A%B1%E6%8C%87%E4%BB%A4/" title="花指令">花指令</a><time datetime="2024-01-27T14:29:15.000Z" title="发表于 2024-01-27 22:29:15">2024-01-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/2025/01/14/2025%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8%E8%B5%9B-happylock/cover.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2025 By Pluto</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"><script>if (!window.MathJax) {
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      tags: 'ams'
+    },
+    chtml: {
+      scale: 1.1
+    },
+    options: {
+      renderActions: {
+        findScript: [10, doc => {
+          for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+            const display = !!node.type.match(/; *mode=display/)
+            const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+            const text = document.createTextNode('')
+            node.parentNode.replaceChild(text, node)
+            math.start = {node: text, delim: '', n: 0}
+            math.end = {node: text, delim: '', n: 0}
+            doc.math.push(math)
+          }
+        }, '']
+      }
+    }
+  }
+  
+  const script = document.createElement('script')
+  script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+  script.id = 'MathJax-script'
+  script.async = true
+  document.head.appendChild(script)
+} else {
+  MathJax.startup.document.state(0)
+  MathJax.texReset()
+  MathJax.typesetPromise()
+}</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="false" data-text="(づ′▽`)づ,Σ(ʘωʘﾉ)ﾉ,(●• ̀ω•́ )✧,(•̀⌓• )シ" data-fontsize="20px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
