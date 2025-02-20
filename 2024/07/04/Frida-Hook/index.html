@@ -233,7 +233,7 @@ target="_blank" rel="noopener" href="https://frida.re/docs/home/">官方文档</
 <col style="width: 27%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: left;">操作模式</th>
 <th style="text-align: left;">描述</th>
 <th style="text-align: left;">优点</th>
@@ -241,7 +241,7 @@ target="_blank" rel="noopener" href="https://frida.re/docs/home/">官方文档</
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: left;">CLI（命令行）模式</td>
 <td
 style="text-align: left;">通过命令行直接将JavaScript脚本注入进程中，对进程进行操作</td>
@@ -249,7 +249,7 @@ style="text-align: left;">通过命令行直接将JavaScript脚本注入进程�
 <td
 style="text-align: left;">在较小规模的操作或者需求比较简单的场景中使用</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;">RPC模式</td>
 <td
 style="text-align: left;">使用Python进行JavaScript脚本的注入工作，实际对进程进行操作的还是JavaScript脚本，可以通过RPC传输给Python脚本来进行复杂数据的处理</td>
@@ -270,7 +270,7 @@ style="text-align: left;">在大规模调用中更加普遍，特别是对于复
 <col style="width: 23%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: left;">注入模式</th>
 <th style="text-align: left;">描述</th>
 <th style="text-align: left;">命令或参数</th>
@@ -279,7 +279,7 @@ style="text-align: left;">在大规模调用中更加普遍，特别是对于复
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: left;">Spawn模式</td>
 <td
 style="text-align: left;">将启动App的权利交由Frida来控制，即使目标App已经启动，在使用Frida注入程序时还是会重新启动App</td>
@@ -290,7 +290,7 @@ style="text-align: left;">适合于需要在App启动时即进行注入的场景
 <td
 style="text-align: left;">当需要监控App从启动开始的所有行为时使用</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;">Attach模式</td>
 <td
 style="text-align: left;">在目标App已经启动的情况下，Frida通过ptrace注入程序从而执行Hook的操作</td>
@@ -320,42 +320,42 @@ style="text-align: left;">在App已经启动，或者我们只关心特定时刻
 <col style="width: 52%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: left;">API名称</th>
 <th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: left;"><code>Java.use(className)</code></td>
 <td
 style="text-align: left;">获取指定的Java类并使其在JavaScript代码中可用。</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;"><code>Java.perform(callback)</code></td>
 <td style="text-align: left;">确保回调函数在Java的主线程上执行。</td>
 </tr>
-<tr class="odd">
+<tr>
 <td
 style="text-align: left;"><code>Java.choose(className, callbacks)</code></td>
 <td style="text-align: left;">枚举指定类的所有实例。</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;"><code>Java.cast(obj, cls)</code></td>
 <td
 style="text-align: left;">将一个Java对象转换成另一个Java类的实例。</td>
 </tr>
-<tr class="odd">
+<tr>
 <td
 style="text-align: left;"><code>Java.enumerateLoadedClasses(callbacks)</code></td>
 <td style="text-align: left;">枚举进程中已经加载的所有Java类。</td>
 </tr>
-<tr class="even">
+<tr>
 <td
 style="text-align: left;"><code>Java.enumerateClassLoaders(callbacks)</code></td>
 <td style="text-align: left;">枚举进程中存在的所有Java类加载器。</td>
 </tr>
-<tr class="odd">
+<tr>
 <td
 style="text-align: left;"><code>Java.enumerateMethods(targetClassMethod)</code></td>
 <td style="text-align: left;">枚举指定类的所有方法。</td>
@@ -370,20 +370,20 @@ style="text-align: left;"><code>Java.enumerateMethods(targetClassMethod)</code><
 <col style="width: 47%" />
 </colgroup>
 <thead>
-<tr class="header">
+<tr>
 <th style="text-align: left;">日志方法</th>
 <th style="text-align: left;">描述</th>
 <th style="text-align: left;">区别</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
+<tr>
 <td style="text-align: left;"><code>console.log()</code></td>
 <td style="text-align: left;">使用JavaScript直接进行日志打印</td>
 <td
 style="text-align: left;">多用于在CLI模式中，<code>console.log()</code>直接输出到命令行界面，使用户可以实时查看。在RPC模式中，<code>console.log()</code>同样输出在命令行，但可能被Python脚本的输出内容掩盖。</td>
 </tr>
-<tr class="even">
+<tr>
 <td style="text-align: left;"><code>send()</code></td>
 <td
 style="text-align: left;">Frida的专有方法，用于发送数据或日志到外部Python脚本</td>
