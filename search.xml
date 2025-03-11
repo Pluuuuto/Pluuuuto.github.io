@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> crypto </tag>
+            <tag> Crypto </tag>
             
-            <tag> lattice </tag>
+            <tag> Lattice </tag>
             
         </tags>
       
@@ -72,9 +72,9 @@
       
         <tags>
             
-            <tag> crypto </tag>
-            
             <tag> RSA </tag>
+            
+            <tag> Crypto </tag>
             
         </tags>
       
@@ -99,11 +99,11 @@
       
         <tags>
             
-            <tag> reverse </tag>
+            <tag> Reverse </tag>
             
-            <tag> android </tag>
+            <tag> Hook </tag>
             
-            <tag> hook </tag>
+            <tag> Android </tag>
             
         </tags>
       
@@ -128,11 +128,11 @@
       
         <tags>
             
-            <tag> reverse </tag>
-            
             <tag> 动调 </tag>
             
             <tag> 反调试 </tag>
+            
+            <tag> Reverse </tag>
             
         </tags>
       
@@ -157,9 +157,9 @@
       
         <tags>
             
-            <tag> crypto </tag>
+            <tag> Crypto </tag>
             
-            <tag> lattice </tag>
+            <tag> Lattice </tag>
             
         </tags>
       
@@ -184,7 +184,9 @@
       
         <tags>
             
-            <tag> crypto </tag>
+            <tag> RSA </tag>
+            
+            <tag> Crypto </tag>
             
         </tags>
       
@@ -209,9 +211,9 @@
       
         <tags>
             
-            <tag> crypto </tag>
+            <tag> Crypto </tag>
             
-            <tag> lattice </tag>
+            <tag> Lattice </tag>
             
         </tags>
       
@@ -236,9 +238,9 @@
       
         <tags>
             
-            <tag> crypto </tag>
+            <tag> Crypto </tag>
             
-            <tag> ecc </tag>
+            <tag> ECC </tag>
             
         </tags>
       
@@ -292,11 +294,11 @@
       
         <tags>
             
-            <tag> reverse </tag>
-            
-            <tag> angr </tag>
+            <tag> Reverse </tag>
             
             <tag> 符号执行 </tag>
+            
+            <tag> Angr </tag>
             
         </tags>
       
@@ -321,7 +323,7 @@
       
         <tags>
             
-            <tag> reverse </tag>
+            <tag> Reverse </tag>
             
             <tag> 花指令 </tag>
             
@@ -348,7 +350,7 @@
       
         <tags>
             
-            <tag> reverse </tag>
+            <tag> Reverse </tag>
             
         </tags>
       
@@ -373,7 +375,7 @@
       
         <tags>
             
-            <tag> reverse </tag>
+            <tag> Reverse </tag>
             
             <tag> Z3 </tag>
             
@@ -500,9 +502,9 @@
       
         <tags>
             
-            <tag> cmd </tag>
-            
             <tag> 邮件 </tag>
+            
+            <tag> CMD </tag>
             
         </tags>
       
@@ -602,7 +604,7 @@
       
         <tags>
             
-            <tag> WP </tag>
+            <tag> 校赛 </tag>
             
         </tags>
       
