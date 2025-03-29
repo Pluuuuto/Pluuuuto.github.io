@@ -40,7 +40,7 @@
       
       <categories>
           
-          <category> reverse笔记 </category>
+          <category> Reverse笔记 </category>
           
       </categories>
       
@@ -72,9 +72,9 @@
       
         <tags>
             
-            <tag> RSA </tag>
-            
             <tag> Crypto </tag>
+            
+            <tag> RSA </tag>
             
         </tags>
       
@@ -128,11 +128,11 @@
       
         <tags>
             
+            <tag> Reverse </tag>
+            
             <tag> 动调 </tag>
             
             <tag> 反调试 </tag>
-            
-            <tag> Reverse </tag>
             
         </tags>
       
@@ -184,9 +184,9 @@
       
         <tags>
             
-            <tag> RSA </tag>
-            
             <tag> Crypto </tag>
+            
+            <tag> RSA </tag>
             
         </tags>
       
@@ -258,7 +258,7 @@
       
       <categories>
           
-          <category> reverse笔记 </category>
+          <category> Reverse笔记 </category>
           
       </categories>
       
@@ -296,9 +296,9 @@
             
             <tag> Reverse </tag>
             
-            <tag> 符号执行 </tag>
-            
             <tag> Angr </tag>
+            
+            <tag> 符号执行 </tag>
             
         </tags>
       
@@ -316,7 +316,7 @@
       
       <categories>
           
-          <category> reverse笔记 </category>
+          <category> Reverse笔记 </category>
           
       </categories>
       
@@ -368,7 +368,7 @@
       
       <categories>
           
-          <category> reverse笔记 </category>
+          <category> Reverse笔记 </category>
           
       </categories>
       
@@ -502,9 +502,9 @@
       
         <tags>
             
-            <tag> 邮件 </tag>
-            
             <tag> CMD </tag>
+            
+            <tag> 邮件 </tag>
             
         </tags>
       
